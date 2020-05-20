@@ -6,8 +6,8 @@ import re
 import xlsxwriter
 
 
-baseurl = "https://www.brk.de/rotes-kreuz/adressen/kreisverbaende/detail/0"
-workbook = xlsxwriter.Workbook('Example2.xlsx') 
+baseurl = "SETURL"
+workbook = xlsxwriter.Workbook('Example.xlsx') 
 worksheet = workbook.add_worksheet() 
 row = 0
 column = 0
@@ -15,7 +15,7 @@ column = 0
 i = 200
 
 urls = []
-
+# NICE FUNCTION SO SEARCH MULTIPLE DOMAINS 
 while i < 300:
 	url = str(baseurl)+str(i)
 
@@ -27,9 +27,9 @@ for each in urls:
 	response = requests.get(each)
 	soup = BeautifulSoup(response.text, "html.parser")
 
-	name = soup.findAll('span', {"itemprop" : "name"})
-	telephone = soup.findAll('span', {"itemprop" : "telephone"})
-	email = soup.findAll('span', {"itemprop" : "email"})
+	name = soup.findAll('span', {"itemprop" : "name"})  #SEARCH FOR A HTMLTAG TO SCRAPE
+	telephone = soup.findAll('span', {"itemprop" : "telephone"})  #SEARCH FOR A HTMLTAG TO SCRAPE
+	email = soup.findAll('span', {"itemprop" : "email"})  #SEARCH FOR A HTMLTAG TO SCRAPE
 
 	#all_spans = "NAME: ", name,"\n Telefon: ", telephone ,"\n Email: ", email
 	all_spans = name, telephone, email

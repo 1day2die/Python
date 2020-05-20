@@ -6,14 +6,14 @@ import re
 import xlsxwriter
 
 
-baseurl = "https://www.dgwz.de/publikationen/ihk"
-workbook = xlsxwriter.Workbook('Example2.xlsx') 
+baseurl = "SET URL"
+workbook = xlsxwriter.Workbook('Example.xlsx') 
 worksheet = workbook.add_worksheet() 
 
 response = requests.get(baseurl)
 soup = BeautifulSoup(response.text, "html.parser")
 
-h1 = soup.findAll('h1')
+h1 = soup.findAll('h1') #SEARCH FOR A HTMLTAG TO SCRAPE
 row = 0
 column = 0
 for each in h1:
