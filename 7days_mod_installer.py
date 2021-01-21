@@ -7,6 +7,8 @@ import colorama
 from colorama import Fore, Back, Style
 import pyunpack
 import progressbar
+import shutil
+
 
 
 def enterpath():
@@ -73,11 +75,10 @@ def installMods():
         except Exception as e: print(e)
 
         os.remove(os.path.join(home, "Mods", "") + "Mods.zip")
+        shutil.rmtree(os.path.join(home, str(old_Mods_folder_name)))
 
         print("")
         print(Fore.GREEN + "Mods sind Installiert!")
-        print(Fore.CYAN + "Deine alten Mods findest du unter")
-        print(home + old_Mods_folder_name)
         print("")
         print("")
         print(Back.GREEN, Fore.BLACK + "Den Server erreichst du unter:")
